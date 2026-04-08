@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, Github, Linkedin } from "lucide-react";
+import { profile } from "@/data/profile";
 
 const ContactSection = () => {
   return (
@@ -33,13 +34,13 @@ const ContactSection = () => {
 
             <div className="space-y-4">
               <a
-                href="mailto:victorferraz364@gmail.com"
+                href={`mailto:${profile.email}`}
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
               >
                 <Mail className="w-5 h-5 text-primary" />
                 <span 
                   className="group-hover:underline underline-offset-4 break-all">
-                  victorferraz364@gmail.com
+                  {profile.email}
                 </span>
               </a>
               <div className="flex items-center gap-3 text-muted-foreground">
@@ -50,7 +51,7 @@ const ContactSection = () => {
 
             <div className="flex gap-4 pt-4">
               <a
-                href="https://github.com/victorferraz364?tab=repositories"
+                href={profile.github.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-sm border border-border hover:border-primary hover:text-primary text-muted-foreground transition-colors"
@@ -58,7 +59,7 @@ const ContactSection = () => {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://www.linkedin.com/in/victor-ferraz-593b871b2/"
+                href={profile.linkedin.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-sm border border-border hover:border-primary hover:text-primary text-muted-foreground transition-colors"

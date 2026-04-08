@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Download, Github, Linkedin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { profile } from "@/data/profile";
 
 const HeroSection = () => {
   return (
@@ -90,7 +91,7 @@ const HeroSection = () => {
 
             <div className="flex gap-4 pt-5">
               <a
-                href="https://github.com/"
+                href={profile.github.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-sm border border-border hover:border-primary hover:text-primary text-muted-foreground transition-colors"
@@ -99,7 +100,7 @@ const HeroSection = () => {
                 <Github className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com/"
+                href={profile.linkedin.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-sm border border-border hover:border-primary hover:text-primary text-muted-foreground transition-colors"

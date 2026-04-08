@@ -1,5 +1,6 @@
 import { Printer, ArrowLeft, Mail, Phone, MapPin, Linkedin, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
+import { profile } from "@/data/profile";
 
 const Curriculo = () => {
   const handlePrint = () => window.print();
@@ -81,24 +82,24 @@ const Curriculo = () => {
           <div className="flex flex-wrap gap-x-6 gap-y-1.5 text-sm text-gray-600 border-t border-b border-gray-200 py-3 mb-5">
             <span className="flex items-center gap-1.5">
               <Phone className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-              (66) 9 97171555
+              {profile.phone}
             </span>
-            <a href="mailto:victorferraz364@gmail.com" className="flex items-center gap-1.5 hover:text-gray-900">
+            <a href={`mailto:${profile.email}`} className="flex items-center gap-1.5 hover:text-gray-900">
               <Mail className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-              victorferraz364@gmail.com
+              {profile.email}
             </a>
             <a
-              href="https://linkedin.com/in/victor-ferraz-593b871b2"
+              href={profile.linkedin.url}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 hover:text-gray-900"
             >
               <Linkedin className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-              linkedin.com/in/victor-ferraz-593b871b2
+              {profile.linkedin.label}
             </a>
             <span className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-              Alto Araguaia, MT — CEP 78780-000
+              {profile.locationFull}
             </span>
             <span className="flex items-center gap-1.5">
               <Globe className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
