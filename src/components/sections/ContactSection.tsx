@@ -1,10 +1,15 @@
 import { motion } from "framer-motion";
 import { Mail, MapPin, Github, Linkedin } from "lucide-react";
 import { profile } from "@/data/profile";
+import type { ContactContent } from "@/data/geralContent";
 
-const ContactSection = () => {
+interface Props {
+  content: ContactContent;
+}
+
+const ContactSection = ({ content }: Props) => {
   return (
-    <section id="contato" className="py-24 px-4 sm:px-6 md:px-12 lg:px-24 bg-card overflow-x-hidden">
+    <section id="contato" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-24 bg-card overflow-x-hidden">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -27,9 +32,7 @@ const ContactSection = () => {
         >
           <div className="space-y-6 min-w-0">
             <p className="text-secondary-foreground text-lg leading-relaxed">
-              Estou sempre aberto a novas oportunidades e conexões.
-              <br />
-              <span className="text-muted-foreground">Vamos conversar?</span>
+              {content.intro}
             </p>
 
             <div className="space-y-4">
@@ -38,8 +41,7 @@ const ContactSection = () => {
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
               >
                 <Mail className="w-5 h-5 text-primary" />
-                <span 
-                  className="group-hover:underline underline-offset-4 break-all">
+                <span className="group-hover:underline underline-offset-4 break-all">
                   {profile.email}
                 </span>
               </a>
@@ -71,17 +73,10 @@ const ContactSection = () => {
 
           <div
             className="p-5 sm:p-8 rounded-sm border border-border glow min-w-0"
-            style={{ background: 'var(--gradient-card)' }}
+            style={{ background: "var(--gradient-card)" }}
           >
             <pre className="font-heading text-xs sm:text-sm text-muted-foreground leading-relaxed whitespace-pre-wrap break-words overflow-x-auto">
-              <code>
-{`{
-  "nome": "Victor Angelo",
-  "stack": ["Angular", "Java", "Spring"],
-  "formação": "ADS — UNOPAR",
-  "status": "Disponível"
-}`}
-              </code>
+              <code>{content.jsonBlock}</code>
             </pre>
           </div>
         </motion.div>

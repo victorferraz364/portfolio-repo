@@ -6,9 +6,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+src/data/textos.md
 
 # Dependencies
 node_modules
+.github
 
 # Draft pages (not ready for production)
 src/_drafts

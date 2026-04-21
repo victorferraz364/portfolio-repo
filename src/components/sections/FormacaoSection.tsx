@@ -1,39 +1,13 @@
 import { motion } from "framer-motion";
-import { GraduationCap, BookOpen, Wrench } from "lucide-react";
+import type { FormacaoItem } from "@/data/geralContent";
 
-const formacoes = [
-  {
-    icon: GraduationCap,
-    titulo: "Pós-Graduação em Engenharia de Software",
-    instituicao: "Em andamento",
-    status: "Pós-Graduação",
-    descricao:
-      "Especialização com foco em arquitetura de software, qualidade, processos de desenvolvimento e boas práticas de engenharia. Amplia a capacidade de estruturar soluções escaláveis e bem documentadas.",
-    tags: ["Arquitetura", "Qualidade de Software", "Processos", "Boas Práticas"],
-  },
-  {
-    icon: BookOpen,
-    titulo: "Análise e Desenvolvimento de Sistemas",
-    instituicao: "Graduação concluída",
-    status: "Graduação",
-    descricao:
-      "Formação base em desenvolvimento, análise de sistemas, banco de dados, algoritmos e gestão de projetos. Fornece a fundamentação técnica e analítica para atuar tanto no desenvolvimento quanto na análise de processos e sistemas.",
-    tags: ["ADS", "Banco de Dados", "Algoritmos", "Gestão de Projetos"],
-  },
-  {
-    icon: Wrench,
-    titulo: "Analista de Sistemas de Automação",
-    instituicao: "SENAI — Conclusão prevista: Junho 2026",
-    status: "Curso Profissionalizante",
-    descricao:
-      "Formação profissionalizante em automação industrial e sistemas de controle. Adiciona ao perfil o entendimento de processos físicos, lógica de controle e integração entre hardware e software — habilidade diferenciada para atuar em indústrias e ambientes de automação.",
-    tags: ["Automação Industrial", "Controle de Processos", "PLC", "Instrumentação"],
-  },
-];
+interface Props {
+  formacoes: FormacaoItem[];
+}
 
-const FormacaoSection = () => {
+const FormacaoSection = ({ formacoes }: Props) => {
   return (
-    <section id="formacao" className="py-24 px-6 md:px-12 lg:px-24 bg-card">
+    <section id="formacao" className="py-16 md:py-24 px-6 md:px-12 lg:px-24 bg-card">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

@@ -1,4 +1,4 @@
-import { Printer, ArrowLeft, Mail, Phone, MapPin, Linkedin, Globe } from "lucide-react";
+﻿import { Printer, ArrowLeft, Mail, Phone, MapPin, Linkedin, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { profile } from "@/data/profile";
 
@@ -45,57 +45,58 @@ const Curriculo = () => {
       `}</style>
 
       {/* Toolbar */}
-      <div className="no-print fixed top-0 left-0 right-0 z-50 bg-background border-b border-border px-6 py-3 flex items-center justify-between">
+      <div className="no-print fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur border-b border-border px-4 sm:px-6 h-14 flex items-center justify-between gap-3">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm font-heading text-muted-foreground hover:text-primary transition-colors tracking-widest uppercase"
+          className="inline-flex items-center gap-2 min-h-[44px] px-2 text-sm font-heading text-muted-foreground hover:text-primary transition-colors tracking-widest uppercase"
         >
           <ArrowLeft className="w-4 h-4" />
-          Voltar
+          <span className="hidden sm:inline">Voltar</span>
         </Link>
         <button
           onClick={handlePrint}
-          className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-5 py-2 rounded-sm font-heading text-sm font-semibold tracking-wider uppercase hover:opacity-90 transition-opacity"
+          className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-4 sm:px-5 min-h-[44px] rounded-sm font-heading text-xs sm:text-sm font-semibold tracking-wider uppercase hover:opacity-90 transition-opacity"
         >
           <Printer className="w-4 h-4" />
-          Imprimir / Salvar PDF
+          <span className="hidden sm:inline">Imprimir / Salvar PDF</span>
+          <span className="sm:hidden">PDF</span>
         </button>
       </div>
 
       {/* CV Page */}
-      <div className="min-h-screen bg-gray-100 pt-16 pb-12 px-4 no-print-bg">
+      <div className="min-h-screen bg-gray-100 pt-20 pb-12 px-4 no-print-bg">
         <div
-          className="cv-page bg-white text-gray-900 max-w-[794px] mx-auto shadow-xl rounded-sm mt-6 p-8"
+          className="cv-page bg-white text-gray-900 max-w-[794px] mx-auto shadow-xl rounded-sm mt-4 p-6 sm:p-8 md:p-10"
           style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
         >
           {/* Header */}
           <div className="mb-4">
-            <h1 className="text-3xl font-bold tracking-tight text-gray-900 uppercase">
+            <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 uppercase leading-tight">
               Victor Angelo Ferraz de Oliveira
             </h1>
-            <p className="text-sm text-gray-500 mt-1 font-medium tracking-wide">
+            <p className="text-sm text-gray-600 mt-1 font-medium tracking-wide">
               Analista de Sistemas · Processos · Automação
             </p>
           </div>
 
           {/* Contact Info */}
-          <div className="flex flex-wrap gap-x-6 gap-y-1.5 text-sm text-gray-600 border-t border-b border-gray-200 py-3 mb-5">
+          <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-600 border-t border-b border-gray-200 py-3 mb-6">
             <span className="flex items-center gap-1.5">
               <Phone className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
               {profile.phone}
             </span>
-            <a href={`mailto:${profile.email}`} className="flex items-center gap-1.5 hover:text-gray-900">
+            <a href={`mailto:${profile.email}`} className="flex items-center gap-1.5 hover:text-gray-900 transition-colors">
               <Mail className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-              {profile.email}
+              <span className="break-all">{profile.email}</span>
             </a>
             <a
               href={profile.linkedin.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-gray-900"
+              className="flex items-center gap-1.5 hover:text-gray-900 transition-colors"
             >
               <Linkedin className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-              {profile.linkedin.label}
+              <span className="break-all">{profile.linkedin.label}</span>
             </a>
             <span className="flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
@@ -108,8 +109,8 @@ const Curriculo = () => {
           </div>
 
           {/* Summary */}
-          <div className="cv-section mb-5">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2 border-b border-gray-100 pb-1">
+          <div className="cv-section mb-6">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2 border-b border-gray-200 pb-1.5">
               Perfil Profissional
             </h2>
             <p className="text-sm text-gray-700 leading-relaxed">
@@ -118,40 +119,38 @@ const Curriculo = () => {
           </div>
 
           {/* Experience */}
-          <div className="cv-section mb-5">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 border-b border-gray-100 pb-1">
+          <div className="cv-section mb-6">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 border-b border-gray-200 pb-1.5">
               Experiência Profissional
             </h2>
-
-            <div className="space-y-4">
+            <div className="space-y-5">
               <div>
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="text-sm font-semibold text-gray-900">Frentista</h3>
                     <p className="text-xs text-gray-500 mt-0.5">Auto Posto Araguaia</p>
                   </div>
-                  <span className="text-xs text-gray-400 whitespace-nowrap flex-shrink-0">Dez/2023 – Dez/2025</span>
+                  <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">Dez/2023 - Dez/2025</span>
                 </div>
-                <ul className="mt-1.5 space-y-1 text-sm text-gray-600 list-none pl-0">
-                  <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">›</span>Atendimento ao cliente com cordialidade e agilidade</li>
-                  <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">›</span>Organização do ambiente de trabalho e apoio à rotina operacional</li>
-                  <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">›</span>Orientação ao cliente e suporte em demandas do dia a dia</li>
-                  <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">›</span>Responsabilidade com horários, disciplina e postura profissional</li>
+                <ul className="mt-2 space-y-1 text-sm text-gray-700 list-none pl-0">
+                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Atendimento ao cliente com cordialidade e agilidade</li>
+                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Organização do ambiente de trabalho e apoio à rotina operacional</li>
+                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Orientação ao cliente e suporte em demandas do dia a dia</li>
+                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Responsabilidade com horários, disciplina e postura profissional</li>
                 </ul>
               </div>
-
               <div>
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="text-sm font-semibold text-gray-900">Autônomo — Suporte e Serviços de TI</h3>
                     <p className="text-xs text-gray-500 mt-0.5">Prestação de serviços · Diferencial</p>
                   </div>
-                  <span className="text-xs text-gray-400 whitespace-nowrap flex-shrink-0">Paralelo</span>
+                  <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">Paralelo</span>
                 </div>
-                <ul className="mt-1.5 space-y-1 text-sm text-gray-600 list-none pl-0">
-                  <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">›</span>Atendimento ao cliente presencial e remoto</li>
-                  <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">›</span>Diagnóstico, manutenção e formatação de computadores</li>
-                  <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">›</span>Instalação e configuração de sistemas e softwares</li>
+                <ul className="mt-2 space-y-1 text-sm text-gray-700 list-none pl-0">
+                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Atendimento ao cliente presencial e remoto</li>
+                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Diagnóstico, manutenção e formatação de computadores</li>
+                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Instalação e configuração de sistemas e softwares</li>
                 </ul>
               </div>
             </div>
@@ -159,36 +158,33 @@ const Curriculo = () => {
 
           {/* Education */}
           <div className="cv-section">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-3 border-b border-gray-100 pb-1">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 border-b border-gray-200 pb-1.5">
               Educação
             </h2>
-
             <div className="space-y-3">
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">Pós-Graduação em Engenharia de Software</h3>
                   <p className="text-xs text-gray-500 mt-0.5">UNOPAR</p>
                 </div>
-                <span className="text-xs text-gray-400 whitespace-nowrap flex-shrink-0">Jan/2024 – Dez/2024</span>
+                <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">Jan/2024 - Dez/2024</span>
               </div>
-
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">Análise e Desenvolvimento de Sistemas</h3>
                   <p className="text-xs text-gray-500 mt-0.5">UNOPAR · Ensino Superior</p>
                 </div>
-                <span className="text-xs text-gray-400 whitespace-nowrap flex-shrink-0">Ago/2021 – Ago/2023</span>
+                <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">Ago/2021 - Ago/2023</span>
               </div>
-
               <div className="flex items-start justify-between gap-4">
                 <div>
                   <h3 className="text-sm font-semibold text-gray-900">Analista de Sistemas de Automação</h3>
                   <p className="text-xs text-gray-500 mt-0.5">SENAI · Curso profissionalizante</p>
                 </div>
-                <span className="text-xs text-gray-400 whitespace-nowrap flex-shrink-0">Fev/2026 – Jun/2026*</span>
+                <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">Fev/2026 - Jun/2026*</span>
               </div>
             </div>
-            <p className="text-xs text-gray-400 mt-2">* Conclusão prevista para junho/2026.</p>
+            <p className="text-xs text-gray-400 mt-3">* Conclusão prevista para junho/2026.</p>
           </div>
         </div>
       </div>

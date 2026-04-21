@@ -1,15 +1,13 @@
 import { motion } from "framer-motion";
+import type { AboutContent } from "@/data/geralContent";
 
-const AboutSection = () => {
-  const info = [
-    { label: "Idade", value: "24 anos" },
-    { label: "Localização", value: "Alto Araguaia, MT" },
-    { label: "Perfil", value: "Versátil — Analítico e Executivo" },
-    { label: "Disponibilidade", value: "Aberto a diversas áreas" },
-  ];
+interface Props {
+  content: AboutContent;
+}
 
+const AboutSection = ({ content }: Props) => {
   return (
-    <section id="sobre" className="py-24 px-6 md:px-12 lg:px-24">
+    <section id="sobre" className="py-16 md:py-24 px-6 md:px-12 lg:px-24">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -31,41 +29,39 @@ const AboutSection = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <p className="text-secondary-foreground leading-relaxed text-base md:text-lg">
-              Profissional com formação técnica em <span className="text-primary font-medium">Análise e Desenvolvimento de Sistemas</span>, pós-graduação em <span className="text-primary font-medium">Engenharia de Software</span> e curso profissionalizante em <span className="text-primary font-medium">Analista de Sistemas de Automação</span> (SENAI) — um conjunto que combina raciocínio analítico, visão sistêmica e entendimento de processos físicos e digitais.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Meu diferencial está na Profissional com base técnica 
-              em tecnologia e processos, com facilidade 
-              para entender operações, organizar informações e apoiar 
-              rotinas estruturadas. Tenho perfil analítico, atenção a 
-              detalhes e facilidade em aprender rapidamente, buscando 
-              sempre contribuir com eficiência e melhoria contínua.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Sou movido por aprendizado contínuo e estou sempre disposto a mergulhar em novos domínios. Acredito que profissionais que entendem o todo — da regra de negócio à solução — são os que geram mais valor em qualquer equipe.
-            </p>
+            {content.paragraphs.map((para, i) => (
+              <p
+                key={i}
+                className={`leading-relaxed text-base md:text-lg ${
+                  i === 0 ? "text-secondary-foreground" : "text-muted-foreground"
+                }`}
+              >
+                {para}
+              </p>
+            ))}
           </motion.div>
 
           <motion.div
-            className="md:col-span-2 space-y-4"
+            className="md:col-span-2"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {info.map((item) => (
-              <div
-                key={item.label}
-                className="p-4 rounded-sm border border-border hover:border-primary/30 transition-colors"
-                style={{ background: 'var(--gradient-card)' }}
-              >
-                <p className="font-heading text-xs text-muted-foreground uppercase tracking-widest mb-1">
-                  {item.label}
-                </p>
-                <p className="text-foreground font-medium">{item.value}</p>
-              </div>
-            ))}
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-1 md:gap-4">
+              {content.infoCards.map((item) => (
+                <div
+                  key={item.label}
+                  className="p-4 rounded-sm border border-border hover:border-primary/30 transition-colors"
+                  style={{ background: "var(--gradient-card)" }}
+                >
+                  <p className="font-heading text-xs text-muted-foreground uppercase tracking-widest mb-1">
+                    {item.label}
+                  </p>
+                  <p className="text-foreground font-medium">{item.value}</p>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

@@ -4,19 +4,19 @@ import FormacaoSection from "@/components/sections/FormacaoSection";
 import CompetenciasSection from "@/components/sections/CompetenciasSection";
 import ContactSection from "@/components/sections/ContactSection";
 import Footer from "@/components/sections/Footer";
-import { versatilContent } from "@/data/versatilContent";
+import { infraContent } from "@/data/infraContent";
 
-const Index = () => {
+const TI = () => {
   return (
     <div className="min-h-screen bg-background">
-      <HeroSection content={versatilContent.hero} />
-      <AboutSection content={versatilContent.about} />
-      <FormacaoSection formacoes={versatilContent.formacao} />
-      <CompetenciasSection content={versatilContent.competencias} />
-      <ContactSection content={versatilContent.contact} />
+      <HeroSection content={infraContent.hero} />
+      <AboutSection content={infraContent.about} />
+      <FormacaoSection formacoes={infraContent.formacao} />
+      <CompetenciasSection content={infraContent.competencias} />
+      <ContactSection content={infraContent.contact} />
       <Footer />
     </div>
   );
 };
 
-export default Index;
+export default TI;
