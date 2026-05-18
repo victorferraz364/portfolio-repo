@@ -39,7 +39,7 @@ export interface CurriculoData {
 export const curriculoData: CurriculoData = {
   header: {
     nome: "Victor Angelo Ferraz de Oliveira",
-    cargo: "Analista de Sistemas & Automação Industrial",
+    cargo: "Analista de Infraestrutura de TI & Automação Industrial",
   },
 
   perfilProfissional:
@@ -47,7 +47,7 @@ export const curriculoData: CurriculoData = {
 
   experiencia: [
     {
-      titulo: "Autônomo — TI e Automação Industrial",
+      titulo: "Autônomo — Suporte e Serviços de TI",
       instituicao: "Prestação de serviços · Diferencial",
       periodo: "Paralelo",
       descricao: [
@@ -81,7 +81,8 @@ export const curriculoData: CurriculoData = {
       items: [
         "Controle de processos e lógica de automação",
         "Integração hardware/software",
-        "Suporte a equipamentos e processos industriais",
+        "Configuração e suporte a equipamentos industriais",
+        "COnfuguração de clps e sistemas de controle",
       ],
     },
   ],

@@ -38,7 +38,7 @@ export interface CurriculoData {
 export const curriculoTIData: CurriculoData = {
   header: {
     nome: "Victor Angelo Ferraz de Oliveira",
-    cargo: "Desenvolvedor Full-Stack & Infraestrutura",
+    cargo: "Analista de infraestrutura de TI & desenvolvimento full-stack",
   },
 
   perfilProfissional:
