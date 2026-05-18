@@ -1,8 +1,16 @@
 ﻿import { Printer, ArrowLeft, Mail, Phone, MapPin, Linkedin, Globe } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { profile } from "@/data/profile";
+import { curriculoData } from "@/data/curriculoContent";
+import { curriculoTIData } from "@/data/curriculoTIContent";
 
 const Curriculo = () => {
+  const location = useLocation();
+  
+  // Determina qual dataset usar baseado na rota
+  const isTIRoute = location.pathname.includes("/ti");
+  const data = isTIRoute ? curriculoTIData : curriculoData;
+  
   const handlePrint = () => window.print();
 
   return (
@@ -30,15 +38,26 @@ const Curriculo = () => {
           .cv-page {
             box-shadow: none !important;
             margin: 0 !important;
-            padding: 18mm 20mm !important;
+            padding: 16mm 16mm 14mm !important;
             max-width: 100% !important;
             border-radius: 0 !important;
             font-family: Arial, Helvetica, sans-serif !important;
+            font-size: 11px !important;
+            line-height: 1.35 !important;
             -webkit-user-select: text !important;
             user-select: text !important;
           }
           .cv-page * {
             font-family: Arial, Helvetica, sans-serif !important;
+          }
+          .cv-page h1 {
+            font-size: 1.8rem !important;
+          }
+          .cv-page h2 {
+            margin-bottom: 0.3rem !important;
+          }
+          .cv-page .space-y-5 > * + * {
+            margin-top: 0.45rem !important;
           }
           .cv-section { page-break-inside: avoid; }
         }
@@ -72,10 +91,10 @@ const Curriculo = () => {
           {/* Header */}
           <div className="mb-4">
             <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 uppercase leading-tight">
-              Victor Angelo Ferraz de Oliveira
+              {data.header.nome}
             </h1>
             <p className="text-sm text-gray-600 mt-1 font-medium tracking-wide">
-              Analista de Sistemas · Processos · Automação
+              {data.header.cargo}
             </p>
           </div>
 
@@ -104,7 +123,7 @@ const Curriculo = () => {
             </span>
             <span className="flex items-center gap-1.5">
               <Globe className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
-              CNH AB · Inglês intermediário (leitura)
+              {data.outrasInfo.cnh} · {data.outrasInfo.idiomas}
             </span>
           </div>
 
@@ -114,7 +133,7 @@ const Curriculo = () => {
               Perfil Profissional
             </h2>
             <p className="text-sm text-gray-700 leading-relaxed">
-              Formado em Análise e Desenvolvimento de Sistemas e pós-graduado em Engenharia de Software, com experiência prática em tecnologia, atuando com desenvolvimento full-stack, suporte técnico e infraestrutura. Possuo perfil analítico, organizado e orientado a processos, com facilidade para lidar com dados, sistemas e rotinas operacionais. Tenho familiaridade com controle de informações, padronização de atividades e acompanhamento de indicadores, além de boa capacidade de resolução de problemas e atenção a detalhes. Busco ampliar e colaborar com habilidades técnicas na otimização de processos, contribuindo para maior eficiência, previsibilidade e controle das operações em geral.
+              {data.perfilProfissional}
             </p>
           </div>
 
@@ -124,35 +143,47 @@ const Curriculo = () => {
               Experiência Profissional
             </h2>
             <div className="space-y-5">
-              <div>
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900">Frentista</h3>
-                    <p className="text-xs text-gray-500 mt-0.5">Auto Posto Araguaia</p>
+              {data.experiencia.map((exp, idx) => (
+                <div key={idx}>
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-sm font-semibold text-gray-900">{exp.titulo}</h3>
+                      <p className="text-xs text-gray-500 mt-0.5">{exp.instituicao}</p>
+                    </div>
+                    <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">{exp.periodo}</span>
                   </div>
-                  <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">Dez/2023 - Dez/2025</span>
+                  <ul className="mt-2 space-y-1 text-sm text-gray-700 list-none pl-0">
+                    {exp.descricao.map((item, i) => (
+                      <li key={i} className="flex gap-2">
+                        <span className="text-gray-400 flex-shrink-0">›</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="mt-2 space-y-1 text-sm text-gray-700 list-none pl-0">
-                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Atendimento ao cliente com cordialidade e agilidade</li>
-                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Organização do ambiente de trabalho e apoio à rotina operacional</li>
-                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Orientação ao cliente e suporte em demandas do dia a dia</li>
-                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Responsabilidade com horários, disciplina e postura profissional</li>
-                </ul>
-              </div>
-              <div>
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900">Autônomo — Suporte e Serviços de TI</h3>
-                    <p className="text-xs text-gray-500 mt-0.5">Prestação de serviços · Diferencial</p>
-                  </div>
-                  <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">Paralelo</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Technical Skills */}
+          <div className="cv-section mb-6">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 border-b border-gray-200 pb-1.5">
+              Competências Técnicas
+            </h2>
+            <div className="grid grid-cols-2 gap-4">
+              {data.competenciasTecnicas.map((group, idx) => (
+                <div key={idx}>
+                  <h3 className="text-xs font-semibold text-gray-800 mb-2">{group.categoria}</h3>
+                  <ul className="space-y-1 text-xs text-gray-700 list-none pl-0">
+                    {group.items.map((item, i) => (
+                      <li key={i} className="flex gap-2">
+                        <span className="text-gray-400 flex-shrink-0 text-[10px]">•</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="mt-2 space-y-1 text-sm text-gray-700 list-none pl-0">
-                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Atendimento ao cliente presencial e remoto</li>
-                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Diagnóstico, manutenção e formatação de computadores</li>
-                  <li className="flex gap-2"><span className="text-gray-400 flex-shrink-0">›</span>Instalação e configuração de sistemas e softwares</li>
-                </ul>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -162,27 +193,15 @@ const Curriculo = () => {
               Educação
             </h2>
             <div className="space-y-3">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-900">Pós-Graduação em Engenharia de Software</h3>
-                  <p className="text-xs text-gray-500 mt-0.5">UNOPAR</p>
+              {data.educacao.map((edu, idx) => (
+                <div key={idx} className="flex items-start justify-between gap-4">
+                  <div>
+                    <h3 className="text-sm font-semibold text-gray-900">{edu.titulo}</h3>
+                    <p className="text-xs text-gray-500 mt-0.5">{edu.instituicao}</p>
+                  </div>
+                  <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">{edu.periodo}</span>
                 </div>
-                <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">Jan/2024 - Dez/2024</span>
-              </div>
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-900">Análise e Desenvolvimento de Sistemas</h3>
-                  <p className="text-xs text-gray-500 mt-0.5">UNOPAR · Ensino Superior</p>
-                </div>
-                <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">Ago/2021 - Ago/2023</span>
-              </div>
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-sm font-semibold text-gray-900">Analista de Sistemas de Automação</h3>
-                  <p className="text-xs text-gray-500 mt-0.5">SENAI · Curso profissionalizante</p>
-                </div>
-                <span className="text-xs text-gray-500 whitespace-nowrap flex-shrink-0">Fev/2026 - Jun/2026*</span>
-              </div>
+              ))}
             </div>
             <p className="text-xs text-gray-400 mt-3">* Conclusão prevista para junho/2026.</p>
           </div>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Download, Github, Linkedin } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { profile } from "@/data/profile";
 import type { HeroContent } from "@/data/geralContent";
 
@@ -9,6 +9,10 @@ interface Props {
 }
 
 const HeroSection = ({ content }: Props) => {
+  const location = useLocation();
+  const isTIRoute = location.pathname === "/" || location.pathname.startsWith("/ti");
+  const curriculoLink = isTIRoute ? "/curriculo/ti" : "/curriculo";
+
   return (
     <section className="min-h-dvh flex items-center relative overflow-hidden px-6 md:px-12 lg:px-24">
       {/* Grid background */}
@@ -18,7 +22,7 @@ const HeroSection = ({ content }: Props) => {
       }} />
 
       <Link
-        to="/curriculo"
+        to={curriculoLink}
         className="absolute top-4 right-4 sm:top-6 
         sm:right-6 md:right-12 lg:right-24 z-20 inline-flex 
         items-center gap-2 border border-primary/40 text-primary 
