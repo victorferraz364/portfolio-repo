@@ -40,7 +40,7 @@ export const infraContent: PageContent = {
 
   formacao: [
     {
-      ...formacaoBase.posGrad,
+      ...formacaoBase.posGrad2,
       tags: ["Arquitetura de Software", "Qualidade e Testes", "Boas práticas", "Sistemas escaláveis"],
     },
     {

@@ -70,6 +70,14 @@ export const formacaoBase = {
     descricao:
       "Especialização com foco em arquitetura de software, qualidade, processos de desenvolvimento e boas práticas de engenharia. Amplia a capacidade de estruturar soluções escaláveis e bem documentadas.",
   },
+  posGrad2: {
+    icon: GraduationCap,
+    titulo: "Pós-Graduação em Devops",
+    instituicao: "Concluída",
+    status: "Pós-Graduação",
+    descricao:
+      "Especialização voltada para integração entre desenvolvimento e infraestrutura, com foco em automação, versionamento, integração contínua, virtualização e boas práticas para ambientes escaláveis e eficientes.",
+  },
   ads: {
     icon: BookOpen,
     titulo: "Análise e Desenvolvimento de Sistemas",

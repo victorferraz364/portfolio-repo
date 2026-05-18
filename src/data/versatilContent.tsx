@@ -36,7 +36,7 @@ export const versatilContent: PageContent = {
   },
 
   formacao: [
-    { ...formacaoBase.posGrad, tags: ["Arquitetura", "Qualidade de Software", "Processos", "Boas Práticas"] },
+    { ...formacaoBase.posGrad2, tags: ["Arquitetura", "Qualidade de Software", "Processos", "Boas Práticas"] },
     { ...formacaoBase.ads, tags: ["ADS", "Banco de Dados", "Algoritmos", "Gestão de Projetos"] },
     { ...formacaoBase.senai, tags: ["Automação Industrial", "Controle de Processos", "PLC", "Instrumentação"] },
   ],
